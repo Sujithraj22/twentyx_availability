@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:twentyx_availability/screens/availability_screen.dart';
+import 'package:twentyx_availability/screens/demoScreen.dart';
 
 import 'constants/colors.dart';
 
@@ -20,9 +21,10 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(fontFamily: 'Poppins', primaryColor: themeColor),
+      //theme: ThemeData(fontFamily: 'Poppins', primaryColor: themeColor),
       // color to change 265197
-      home: AvailabilityScreen(),
-    );;
+      //home: AvailabilityScreen(),
+     home: IconList(),
+    );
   }
 }
