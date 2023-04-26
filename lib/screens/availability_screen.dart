@@ -9,8 +9,23 @@ class AvailabilityScreen extends StatefulWidget {
 class _AvailabilityScreenState extends State<AvailabilityScreen> {
   //int value = 0;
   AvailabilityData availabilityData = AvailabilityData();
-bool click1 = true;
-bool click = true;
+
+// bool iconClick1 = true;
+// bool iconClick2 = true;
+// bool iconClick3 = true;
+// bool iconClick4 = true;
+//  IconData icon1 = Icons.circle;
+//  // IconData icon2 = Icons.circle;
+//  // IconData icon3 = Icons.circle;
+//  // IconData icon4 = Icons.circle;
+
+  List<IconData> icons = [
+    Icons.circle,
+    Icons.circle,
+    Icons.circle,
+    Icons.circle,
+  ];
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -159,9 +174,10 @@ bool click = true;
                               height: 100,
                               child: Center(
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
+                                    SizedBox(width: 10),
                                     Container(
                                       width: 30,
                                       child: Column(
@@ -175,72 +191,25 @@ bool click = true;
                                                   ["dayText"],
                                               style: TextStyle(
                                                   fontSize: 20,
-                                                  fontWeight:
-                                                      FontWeight.bold)),
-                                          Text(availabilityData
-                                              .dateList[index]["weekText"]),
+                                                  fontWeight: FontWeight.bold)),
+                                          Text(availabilityData.dateList[index]
+                                              ["weekText"]),
                                         ],
                                       ),
                                     ),
-                                    SizedBox(width: 16),
+                                    SizedBox(width: 25),
                                     Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
-                                        IconButton(
-                                          onPressed: () {
-                                            print(click);
-                                            setState(() {
-                                              click = false;
-                                            });
-                                          },
-
-                                               icon: Icon((click = false) ? Icons.circle : Icons.check_circle),
-
-                                        ),
-                                        SizedBox(width: 20),
-                                        IconButton(
-                                          onPressed: () {
-                                            print('icon pressed');
-                                            setState(() {
-                                              click1 = false;
-                                            });
-                                          },
-
-                                          icon: Icon((click1 = false) ? Icons.circle : Icons.check_circle),
-
-                                        ),
-                                        SizedBox(width: 25),
-                                        IconButton(
-                                          onPressed: () {
-                                            print('icon pressed');
-                                            setState(() {
-                                              click = false;
-                                            });
-                                          },
-
-                                          icon: Icon((click = false) ? Icons.circle : Icons.check_circle),
-
-                                        ),
-                                        SizedBox(width: 18),
-                                        IconButton(
-                                          onPressed: () {
-                                            print('icon pressed');
-                                            setState(() {
-                                              click = false;
-                                            });
-                                          },
-
-                                          icon: Icon((click = false) ? Icons.circle : Icons.check_circle),
-
-                                        ),
+                                        CircleIconRow(),
+                                        //SizedBox(width: 20),
                                       ],
                                     ),
-                                    PopupMenuButton(itemBuilder: (context){
-                                      return[
+                                    PopupMenuButton(itemBuilder: (context) {
+                                      return [
                                         PopupMenuItem(child: Text('')),
                                       ];
-
                                     }),
                                   ],
                                 ),
@@ -253,11 +222,231 @@ bool click = true;
               ),
 
               //************ View Booking tab
-              Text('hi'),
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(10),
+                      topRight: Radius.circular(10)),
+                  color: Colors.white,
+                ),
+                margin: EdgeInsets.only(left: 10, right: 10),
+                //padding: EdgeInsets.only(top: 10),
+                // color: Colors.white,
+                child: Column(
+                  children: [
+                    // Row with four columns
+
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              children: [
+                                Icon(Icons.light_mode_rounded,
+                                    color: Colors.amber),
+                                Text("Long day"),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              children: [
+                                Text(
+                                  'A M',
+                                  style: TextStyle(
+                                      fontSize: 21, color: Colors.red[200]),
+                                ),
+                                Text("Morning"),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              children: [
+                                Text(
+                                  'P M',
+                                  style: TextStyle(
+                                      fontSize: 21, color: Colors.blue),
+                                ),
+                                Text("Afternoon"),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              children: [
+                                Icon(Icons.bedtime),
+                                Text("Night"),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    //********** ListView with ListTile widgets
+                    Expanded(
+                      child: ListView.builder(
+                          itemCount: availabilityData.dateList.length,
+                          itemBuilder: (
+                            BuildContext context,
+                            int index,
+                          ) {
+                            return Container(
+                              decoration: BoxDecoration(
+                                border: Border(
+                                  bottom: BorderSide(
+                                    width: 2,
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                              ),
+                              height: 100,
+                              child: Center(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    SizedBox(width: 10),
+                                    Container(
+                                      width: 30,
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                              availabilityData.dateList[index]
+                                                  ["dayText"],
+                                              style: TextStyle(
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.bold)),
+                                          Text(availabilityData.dateList[index]
+                                              ["weekText"]),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(width: 25),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        CircleIconRow2(),
+                                        //SizedBox(width: 20),
+                                      ],
+                                    ),
+                                    PopupMenuButton(itemBuilder: (context) {
+                                      return [
+                                        PopupMenuItem(child: Text('')),
+                                      ];
+                                    }),
+                                  ],
+                                ),
+                              ),
+                            );
+                          }),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class CircleIconRow extends StatefulWidget {
+  @override
+  _CircleIconRowState createState() => _CircleIconRowState();
+}
+
+//***********Row for set availability
+class _CircleIconRowState extends State<CircleIconRow> {
+  AvailabilityData availabilityData = AvailabilityData();
+  List<bool> _isSelected = [false, false, false, false];
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        _buildCircleIcon(0),
+        SizedBox(width: 20),
+        _buildCircleIcon(1),
+        SizedBox(width: 20),
+        _buildCircleIcon(2),
+        SizedBox(width: 20),
+        _buildCircleIcon(3),
+      ],
+    );
+  }
+
+  Widget _buildCircleIcon(int index) {
+    return IconButton(
+      icon: Icon(
+        _isSelected[index] ? Icons.check_circle : Icons.circle,
+        color: _isSelected[index] ? Colors.blue : Colors.grey,
+      ),
+      onPressed: () {
+        setState(() {
+          _isSelected[index] = !_isSelected[index];
+        });
+      },
+    );
+  }
+}
+
+//**********Row for view bookings
+
+class CircleIconRow2 extends StatefulWidget {
+  @override
+  _CircleIconRow2State createState() => _CircleIconRow2State();
+}
+
+class _CircleIconRow2State extends State<CircleIconRow2> {
+  AvailabilityData availabilityData = AvailabilityData();
+  List<bool> _isSelected = [false, false, false, false];
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        _buildCircleIcon(0),
+        SizedBox(width: 20),
+        _buildCircleIcon(1),
+        SizedBox(width: 20),
+        _buildCircleIcon(2),
+        SizedBox(width: 20),
+        _buildCircleIcon(3),
+      ],
+    );
+  }
+
+  Widget _buildCircleIcon(int index) {
+    return IconButton(
+      icon: Icon(
+        availabilityData.dateList[index]["icon1"]
+            ? Icons.check_circle
+            : Icons.circle,
+        color: availabilityData.dateList[index]["icon1"]
+            ? Colors.blue
+            : Colors.grey,
+      ),
+      onPressed: () {
+        setState(() {
+          _isSelected[index] = !_isSelected[index];
+        });
+      },
     );
   }
 }

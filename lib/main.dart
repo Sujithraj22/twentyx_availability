@@ -23,8 +23,8 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       //theme: ThemeData(fontFamily: 'Poppins', primaryColor: themeColor),
       // color to change 265197
-      //home: AvailabilityScreen(),
-     home: IconList(),
+      //home: CircleIconRow(),
+     home: AvailabilityScreen(),
     );
   }
 }
