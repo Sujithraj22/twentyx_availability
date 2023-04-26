@@ -438,12 +438,23 @@ class CircleIconRow extends StatefulWidget {
 }
 
 //***********Row for set availability
-class _CircleIconRowState extends State<CircleIconRow> {
+class _CircleIconRowState extends State<CircleIconRow> with AutomaticKeepAliveClientMixin {
   AvailabilityData availabilityData = AvailabilityData();
-  List<bool> _isSelected = [false, false, false, false];
+  Map<int, bool> _isSelected = {
+    0: false,
+    1: false,
+    2: false,
+    3: false,
+  };
+  @override
+  bool get wantKeepAlive => true;
+
+
 
   @override
   Widget build(BuildContext context) {
+
+    super.build(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
@@ -460,13 +471,14 @@ class _CircleIconRowState extends State<CircleIconRow> {
 
   Widget _buildCircleIcon(int index) {
     return IconButton(
+
       icon: Icon(
-        _isSelected[index] ? Icons.check_circle : Icons.circle,
-        color: _isSelected[index] ? Colors.blue : Colors.grey,
+        _isSelected[index]! ? Icons.check_circle : Icons.circle,
+        color: _isSelected[index]! ? Colors.blue : Colors.grey,
       ),
       onPressed: () {
         setState(() {
-          _isSelected[index] = !_isSelected[index];
+          _isSelected[index] = !_isSelected[index]!;
         });
       },
     );
@@ -475,46 +487,4 @@ class _CircleIconRowState extends State<CircleIconRow> {
 
 //**********Row for view bookings
 
-class CircleIconRow2 extends StatefulWidget {
-  @override
-  _CircleIconRow2State createState() => _CircleIconRow2State();
-}
 
-class _CircleIconRow2State extends State<CircleIconRow2> {
-  AvailabilityData availabilityData = AvailabilityData();
-  List<bool> _isSelected = [false, false, false, false];
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        _buildCircleIcon(0),
-        SizedBox(width: 20),
-        _buildCircleIcon(1),
-        SizedBox(width: 20),
-        _buildCircleIcon(2),
-        SizedBox(width: 20),
-        _buildCircleIcon(3),
-      ],
-    );
-  }
-
-  Widget _buildCircleIcon(int index) {
-    return IconButton(
-      icon: Icon(
-        availabilityData.dateList[index]["icon1"]
-            ? Icons.check_circle
-            : Icons.circle,
-        color: availabilityData.dateList[index]["icon1"]
-            ? Colors.blue
-            : Colors.grey,
-      ),
-      onPressed: () {
-        setState(() {
-          _isSelected[index] = !_isSelected[index];
-        });
-      },
-    );
-  }
-}
