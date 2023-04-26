@@ -338,7 +338,75 @@ class _AvailabilityScreenState extends State<AvailabilityScreen> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
-                                        CircleIconRow2(),
+                                        //CircleIconRow2(),
+                                        IconButton(
+                                          icon: Icon(
+                                            availabilityData.dateList[index]["icon1"]
+                                                ? Icons.check_circle
+                                                : Icons.circle,
+                                            color: availabilityData.dateList[index]["icon1"]
+                                                ? Colors.blue
+                                                : Colors.grey,
+                                          ),
+                                          onPressed: () {
+                                            setState(() {
+
+                                            });
+                                          },
+                                        ),
+                                        SizedBox(width: 20),
+                                        IconButton(
+                                          icon: Icon(
+                                            availabilityData.dateList[index]["icon2"]
+                                                ? Icons.check_circle
+                                                : Icons.circle,
+                                            color: availabilityData.dateList[index]["icon2"]
+                                                ? Colors.blue
+                                                : Colors.grey,
+                                          ),
+                                          onPressed: () {
+                                            setState(() {
+
+                                            });
+                                          },
+                                        ),
+                                        SizedBox(width: 20),
+
+                                        IconButton(
+                                          icon: Icon(
+                                            availabilityData.dateList[index]["icon3"]
+                                                ? Icons.check_circle
+                                                : Icons.circle,
+                                            color: availabilityData.dateList[index]["icon3"]
+                                                ? Colors.blue
+                                                : Colors.grey,
+                                          ),
+                                          onPressed: () {
+                                            setState(() {
+
+                                            });
+                                          },
+                                        ),
+                                        SizedBox(width: 20),
+
+                                        IconButton(
+                                          icon: Icon(
+                                            availabilityData.dateList[index]["icon4"]
+                                                ? Icons.check_circle
+                                                : Icons.circle,
+                                            color: availabilityData.dateList[index]["icon4"]
+                                                ? Colors.blue
+                                                : Colors.grey,
+                                          ),
+                                          onPressed: () {
+                                            setState(() {
+
+                                            });
+                                          },
+                                        ),
+                                        //SizedBox(width: 20),
+
+
                                         //SizedBox(width: 20),
                                       ],
                                     ),

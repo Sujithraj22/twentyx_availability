@@ -48,7 +48,7 @@ class AvailabilityData{
       "icon1" : false,
       "icon2" : false,
       "icon3" : false,
-      "icon4" : false,
+      "icon4" : true,
     },
     {
       "dayText" : "6",
