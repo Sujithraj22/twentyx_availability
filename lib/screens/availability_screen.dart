@@ -198,7 +198,7 @@ class _AvailabilityScreenState extends State<AvailabilityScreen> {
                                                   ["monthText"],
                                               style: TextStyle(
                                                   fontSize: 18,
-                                                  fontWeight: FontWeight.bold)),
+                                                  fontWeight: FontWeight.normal)),
                                           Text(
                                               availabilityData.dateList[index]
                                                   ["dayText"],
